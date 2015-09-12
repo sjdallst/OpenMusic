@@ -5,3 +5,12 @@
 .DS_Store
 /build
 /captures
+/.idea/
+/gradle/wrapper
+/build.gradle
+/gradle.properties
+/gradlew
+/gradlew.bat
+/settings.gradle
+/app/proguard-rules.pro
+/app/src/main/gen/

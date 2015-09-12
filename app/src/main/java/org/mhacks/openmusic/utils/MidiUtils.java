@@ -18,6 +18,7 @@ import org.mhacks.openmusic.models.Song;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 @EBean(scope = Scope.Singleton)
 public class MidiUtils {
@@ -36,14 +37,14 @@ public class MidiUtils {
 				4,
 				TimeSignature.DEFAULT_METER,
 				TimeSignature.DEFAULT_DIVISION);
-		tempo.setBpm(song.getTempo());
+		tempo.setBpm(song.tempo);
 		tempoTrack.insertEvent(timeSignature);
 		tempoTrack.insertEvent(tempo);
 
 		int currentTime = 0;
-		for (Note note : song.getNotesList()) {
-			noteTrack.insertNote(1, note.getMidiNumber(), 100, currentTime, note.getDuration());
-			currentTime = currentTime + note.getDuration();
+		for (Note note : song.notesList) {
+			noteTrack.insertNote(1, note.midiNumber, 100, currentTime, note.duration);
+			currentTime = currentTime + note.duration;
 		}
 
 		tracks.add(tempoTrack);
@@ -72,10 +73,22 @@ public class MidiUtils {
 
 	public String getSongString(Song song) {
 		try {
-			final ObjectMapper objectMapper = new ObjectMapper();
-			return objectMapper
+			return new ObjectMapper()
 					.writerWithDefaultPrettyPrinter()
-					.writeValueAsString(song.getNotesList());
+					.writeValueAsString(song.notesList);
+		}
+		catch (IOException exception) {
+			LogUtils.error(exception);
+			return null;
+		}
+	}
+
+	public List<Note> getNotes(String jsonString) {
+		try {
+			ObjectMapper objectMapper = new ObjectMapper();
+			return objectMapper
+					.readValue(jsonString, objectMapper.getTypeFactory()
+									.constructCollectionType(List.class, Note.class));
 		}
 		catch (IOException exception) {
 			LogUtils.error(exception);

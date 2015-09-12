@@ -47,8 +47,8 @@ public class Database {
 	public void addSong(Song song) {
 		Songs songs = new Songs();
 		songs.song = mMidiUtils.getSongString(song);
-		songs.title = song.getTitle();
-		songs.tempo = song.getTempo();
+		songs.title = song.title;
+		songs.tempo = song.tempo;
 		mClient.getTable(Songs.class).insert(songs).addListener(
 				new Runnable() {
 					@Override

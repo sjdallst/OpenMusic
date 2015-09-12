@@ -1,6 +1,8 @@
 package org.mhacks.openmusic.utils.database.tables;
 
-public class Songs {
+import java.io.Serializable;
+
+public class Songs implements Serializable {
 	public String id;
 	public String song;
 	public int tempo;

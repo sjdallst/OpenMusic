@@ -48,7 +48,11 @@ public class SongsFragment extends RecyclerViewFragment {
 
 	@Override
 	protected void onRecyclerViewItemClick(int position) {
-
+		switchFragment(
+				new EditSongFragment_()
+						.builder()
+						.mSongArg(mSongsAdapter.getItem(position))
+						.build());
 	}
 
 	@Override

@@ -43,7 +43,7 @@ public class EditSongFragment extends Fragment {
 
 	@AfterViews
 	public void onViewChanged() {
-		getActivity().setTitle("Song");
+		getActivity().setTitle(mSongArg.title);
 
 		List<Note> noteList = mMidiUtils.getNotes(mSongArg.song);
 		mMediaSong = new Song(mSongArg.id, mSongArg.tempo, mSongArg.title, noteList);

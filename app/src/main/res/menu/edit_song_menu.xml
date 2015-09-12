@@ -16,4 +16,10 @@
 			android:icon="@drawable/ic_action_play"
 			app:showAsAction="ifRoom"/>
 
+	<item
+		android:id="@+id/save_song_action"
+		android:title="@string/save_song"
+		android:icon="@drawable/ic_action_save"
+		app:showAsAction="ifRoom"/>
+
 </menu>

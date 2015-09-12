@@ -7,13 +7,19 @@
 	<!-- Main Menu String -->
 	<string name="change_tempo">Change Tempo</string>
 	<string name="play_song">Play Song</string>
+	<string name="save_song">Save Song</string>
 
 	<!-- Messages -->
 	<string name="successfully_shared_song">Successfully shared the song.</string>
 	<string name="failed_sharing_song">Failed to share the song.</string>
+	<string name="successfully_saved_song">Successfully saved the song.</string>
+	<string name="failed_saving_song">Failed to save the song.</string>
 	<string name="generic_error_message">Something went wrong.</string>
 	<string name="generic_retry_message">Tap here to retry.</string>
 
 	<!-- Empty List Messages -->
 	<string name="no_songs">No Songs</string>
+
+	<!-- Misc -->
+	<string name="tempo">Tempo: </string>
 </resources>

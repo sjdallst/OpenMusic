@@ -45,10 +45,11 @@ public class Database {
 	}
 
 	public void addSong(Song song) {
-		Songs songs = new Songs();
-		songs.song = mMidiUtils.getSongString(song);
-		songs.title = song.title;
-		songs.tempo = song.tempo;
+		Songs songs = new Songs(
+				song.id,
+				mMidiUtils.getSongString(song),
+				song.tempo,
+				song.title);
 		mClient.getTable(Songs.class).insert(songs).addListener(
 				new Runnable() {
 					@Override
@@ -68,6 +69,34 @@ public class Database {
 						}
 					}
 				}, MoreExecutors.directExecutor());
+	}
+
+	public void updateSong(Song song) {
+		Songs songs = new Songs(
+				song.id,
+				mMidiUtils.getSongString(song),
+				song.tempo,
+				song.title);
+		mClient.getTable(Songs.class).update(songs).addListener(
+				new Runnable() {
+					@Override
+					public void run() {
+						try {
+							Toast.makeText(
+									mContext,
+									R.string.successfully_saved_song,
+									Toast.LENGTH_SHORT).show();
+						}
+						catch (Exception exception) {
+							LogUtils.error(exception);
+							Toast.makeText(
+									mContext,
+									R.string.failed_saving_song,
+									Toast.LENGTH_SHORT).show();
+						}
+					}
+				},
+				MoreExecutors.directExecutor());
 	}
 
 	public MobileServiceTable<Songs> getSongs() {

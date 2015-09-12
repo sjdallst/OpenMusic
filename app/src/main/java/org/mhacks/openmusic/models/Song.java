@@ -2,7 +2,6 @@ package org.mhacks.openmusic.models;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Song {
@@ -15,13 +14,6 @@ public class Song {
 	private String mTitle;
 	@JsonProperty("notes")
 	private List<Note> mNotesList;
-
-	public Song() {
-		mID = 0;
-		mTempo = 120;
-		mTitle = "Song";
-		mNotesList = new ArrayList<>();
-	}
 
 	public Song(int id, int bpm, String title, List<Note> notesList) {
 		mID = id;

@@ -7,4 +7,14 @@
 	<color name="windowBackground">#FFFFFF</color>
 	<color name="navigationBarColor">#000000</color>
 	<color name="colorAccent">#FF80AB</color>
+
+	<!-- Icon Colors -->
+	<color name="yellow">#FFD600</color>
+	<color name="purple">#9C27B0</color>
+	<color name="pink">#E91E63</color>
+	<color name="light_red">#F44336</color>
+	<color name="light_orange">#FF5722</color>
+	<color name="light_blue">#03A9F4</color>
+	<color name="green">#4CAF50</color>
+	<color name="indigo">#3F51B5</color>
 </resources>

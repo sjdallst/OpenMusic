@@ -1,7 +1,19 @@
 <resources>
-    <string name="app_name">OpenMusic</string>
+	<string name="app_name">Open Music</string>
+
+	<!-- Fragment Title -->
+	<string name="songs_fragment_title">Songs</string>
 
 	<!-- Main Menu String -->
 	<string name="change_tempo">Change Tempo</string>
 	<string name="play_song">Play Song</string>
+
+	<!-- Messages -->
+	<string name="successfully_shared_song">Successfully shared the song.</string>
+	<string name="failed_sharing_song">Failed to share the song.</string>
+	<string name="generic_error_message">Something went wrong.</string>
+	<string name="generic_retry_message">Tap here to retry.</string>
+
+	<!-- Empty List Messages -->
+	<string name="no_songs">No Songs</string>
 </resources>

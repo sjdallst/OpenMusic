@@ -53,8 +53,10 @@ dependencies {
     apt 'org.androidannotations:androidannotations:3.3.2'
     compile fileTree(include: ['*.jar'], dir: 'libs')
     compile 'com.android.support:appcompat-v7:23.0.1'
+    compile 'com.android.support:design:23.0.1'
     compile 'com.android.support:recyclerview-v7:23.0.1'
     compile 'com.fasterxml.jackson.core:jackson-annotations:2.6.1'
     compile 'com.fasterxml.jackson.core:jackson-databind:2.6.1'
+    compile 'com.microsoft.azure:azure-mobile-services-android-sdk:2.0.3'
     compile 'org.androidannotations:androidannotations:3.3.2'
 }

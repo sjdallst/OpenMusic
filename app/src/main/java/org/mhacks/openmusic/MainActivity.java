@@ -1,4 +1,4 @@
-package mhacks.openmusic;
+package org.mhacks.openmusic;
 
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -6,8 +6,7 @@ import android.support.v7.widget.Toolbar;
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.ViewById;
-
-import mhacks.openmusic.fragments.EditSongFragment_;
+import org.mhacks.openmusic.fragments.EditSongFragment_;
 
 @EActivity(R.layout.main_activity)
 public class MainActivity extends AppCompatActivity {

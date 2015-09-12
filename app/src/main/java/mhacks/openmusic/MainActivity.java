@@ -7,6 +7,8 @@ import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.ViewById;
 
+import mhacks.openmusic.fragments.EditSongFragment_;
+
 @EActivity(R.layout.main_activity)
 public class MainActivity extends AppCompatActivity {
 
@@ -16,6 +18,9 @@ public class MainActivity extends AppCompatActivity {
 	@AfterViews
 	public void onViewChanged() {
 		setSupportActionBar(mToolbar);
-		setTitle("Song");
+		getSupportFragmentManager()
+				.beginTransaction()
+				.replace(android.R.id.primary, new EditSongFragment_())
+				.commit();
 	}
 }

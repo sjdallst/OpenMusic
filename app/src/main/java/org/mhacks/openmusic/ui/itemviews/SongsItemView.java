@@ -26,14 +26,15 @@ public class SongsItemView extends RelativeLayout implements ItemView.Binder<Son
 
 	@Override
 	public void bind(Songs data) {
-		Drawable circle = IconUtils.getIcon(getContext(), data.title.charAt(0));
+		char letter = Character.toUpperCase(data.title.charAt(0));
+		Drawable circle = IconUtils.getIcon(getContext(), letter);
 		if (android.os.Build.VERSION.SDK_INT < Build.VERSION_CODES.JELLY_BEAN) {
 			mIcon.setBackgroundDrawable(circle);
 		}
 		else {
 			mIcon.setBackground(circle);
 		}
-		mIcon.setText(String.valueOf(data.title.charAt(0)));
+		mIcon.setText(String.valueOf(letter));
 		mText.setText(data.title);
 	}
 }

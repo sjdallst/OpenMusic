@@ -82,11 +82,11 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
 				if((j % 2) == 0) {
 					blockHeight = 8;
 				} else {
-					blockHeight = 53;
+					blockHeight = 56;
 				}
-				RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(dpToPx(500 / 16, v), dpToPx(blockHeight, v));
-				params.leftMargin = i * dpToPx(500 / 16, v);
-				params.topMargin = dpToPx(height,v);
+				RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(dpToPx(500 / 16, rl), dpToPx(blockHeight, rl));
+				params.leftMargin = i * dpToPx(500 / 16, rl);
+				params.topMargin = dpToPx(height, rl);
 				height += blockHeight;
 				invisibleBlock.setOnDragListener(new MainDragListener(mMeasures.get(position)));
 
@@ -123,9 +123,9 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
 			}
 			note.imageView = iv; // set the imageview
 
-			RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(60, 120);
+			RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(RecyclerAdapter.dpToPx(30, iv), RecyclerAdapter.dpToPx(60, iv));
 			params.leftMargin = RecyclerAdapter.getX(i, rl);
-			params.topMargin = dpToPx(252, rl) - yFromMidi(note.midiNumber, rl) - 120;
+			params.topMargin = dpToPx(252, rl) - yFromMidi(note.midiNumber, rl) - RecyclerAdapter.dpToPx(60, iv);
 			iv.setOnTouchListener(new MainTouchListener());
 			rl.addView(iv, params);
 		}
@@ -157,7 +157,9 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
 		rMap.put(new Integer(69), new Integer(69));
 		rMap.put(new Integer(71), new Integer(69 + 53));
 		rMap.put(new Integer(72), new Integer(69 + 53 + 8));
+		rMap.put(new Integer(73), new Integer(69 + 53 + 8));
 		rMap.put(new Integer(74), new Integer(69 + 53 + 8 + 53));
+		rMap.put(new Integer(75), new Integer(69 + 53 + 8 + 53));
 		rMap.put(new Integer(76), new Integer(69 + 53 + 8 + 53 + 8));
 		rMap.put(new Integer(77), new Integer(69 + 53 + 69 + 53));
 

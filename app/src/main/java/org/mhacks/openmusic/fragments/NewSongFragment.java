@@ -24,16 +24,24 @@ public class NewSongFragment extends BaseSongFragment {
 	public void onViewChanged() {
 		getActivity().setTitle(R.string.new_song_fragment_title);
 		List<Note> noteList = new ArrayList<>();
-		noteList.add(new Note(64, 480, 0));
-		noteList.add(new Note(65, 480, 0));
-		noteList.add(new Note(67, 480, 0));
-		noteList.add(new Note(69, 480, 0));
-		noteList.add(new Note(71, 480, 0));
-		noteList.add(new Note(72, 480, 0));
-		noteList.add(new Note(74, 480, 0));
-		noteList.add(new Note(76, 480, 0));
-		mMediaSong = new Song("0", 120, null, null, "DoReMiFaSoLaTiDo", mMidiUtils
-				.getMeasuresFromNotes(noteList));
+//		noteList.add(new Note(64, 480, 0));
+//		noteList.add(new Note(65, 480, 0));
+//		noteList.add(new Note(67, 480, 0));
+//		noteList.add(new Note(69, 480, 0));
+//		noteList.add(new Note(71, 480, 0));
+//		noteList.add(new Note(72, 480, 0));
+//		noteList.add(new Note(74, 480, 0));
+//		noteList.add(new Note(76, 480, 0));
+//		mMediaSong = new Song("0", 120, null, null, "DoReMiFaSoLaTiDo", mMidiUtils
+//				.getMeasuresFromNotes(noteList));
+		mMediaSong = new Song(
+				"song",
+				120,
+				"Bob",
+				"Smith",
+				"New",
+				null);
+		initialize(noteList);
 	}
 
 	@OptionsItem(R.id.save_song_action)

@@ -20,4 +20,14 @@ public class Note {
 		this.duration = duration;
 		this.xPosition = xPosition;
 	}
+
+//	@JsonIgnore
+//	public int getGuiDuration() {
+//		return duration;
+//	}
+//
+//	@JsonIgnore
+//	public int getDuration() {
+//		return duration * 120;
+//	}
 }

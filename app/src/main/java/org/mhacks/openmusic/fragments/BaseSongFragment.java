@@ -72,7 +72,10 @@ public abstract class BaseSongFragment extends Fragment {
 
 	public void initialize(List<Note> notes) {
 		mMeasureList = mMidiUtils.getMeasuresFromNotes(notes);
-		mRecyclerAdapter.mMeasures.addAll(mMeasureList);
+		for(int i = 0; i < mMeasureList.size(); ++i) {
+			mRecyclerAdapter.addMeasure(mMeasureList.get(i));
+		}
+		mMeasureList = mRecyclerAdapter.mMeasures;
 		mRecyclerView.setAdapter(mRecyclerAdapter);
 		mMediaSong.measures = mMeasureList;
 //		ArrayList<Measure> measureList = new ArrayList<>();
@@ -217,7 +220,7 @@ public abstract class BaseSongFragment extends Fragment {
 	public void addNoteToArray(int length) {
 		mMeasureList.get(mMeasureList.size() - 1).numBeats += length;
 		List<Note> notes = mMeasureList.get(mMeasureList.size() - 1).notes;
-		notes.add(new Note(64, length, notes.size()));
+		notes.add(new Note(64, length * 120, notes.size()));
 	}
 
 	public void displayNote(int length) {
@@ -244,9 +247,9 @@ public abstract class BaseSongFragment extends Fragment {
 		}
 		notes.get(notes.size() - 1).imageView = iv; // set the imageview
 
-		RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(60, 120);
+		RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(RecyclerAdapter.dpToPx(30, iv), RecyclerAdapter.dpToPx(60, iv));
 		params.leftMargin = RecyclerAdapter.getX(notes.size() - 1, rl);
-		params.topMargin = rl.getBottom() - 120;
+		params.topMargin = rl.getBottom() - RecyclerAdapter.dpToPx(60, iv);
 		iv.setOnTouchListener(new MainTouchListener());
 		rl.addView(iv, params);
 

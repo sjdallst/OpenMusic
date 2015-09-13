@@ -27,6 +27,7 @@ public class MidiUtils {
 	@RootContext
 	Context mContext;
 
+	MediaPlayer mediaPlayer = new MediaPlayer();
 	public void playMidi(Song song) {
 		MidiTrack noteTrack = new MidiTrack();
 		MidiTrack tempoTrack = new MidiTrack();
@@ -45,8 +46,8 @@ public class MidiUtils {
 		int currentTime = 0;
 		for (Measure measure : song.measures) {
 			for (Note note : measure.notes) {
-				noteTrack.insertNote(1, note.midiNumber, 100, currentTime, note.duration * 120);
-				currentTime = currentTime + note.duration * 120;
+				noteTrack.insertNote(1, note.midiNumber, 100, currentTime, note.duration*120);
+				currentTime = currentTime + (note.duration*120);
 			}
 		}
 
@@ -62,7 +63,10 @@ public class MidiUtils {
 		}
 
 		try {
-			MediaPlayer mediaPlayer = new MediaPlayer();
+			if(mediaPlayer.isPlaying()) {
+				mediaPlayer.stop();
+				mediaPlayer.reset();
+			}
 			mediaPlayer.setDataSource(output.getAbsolutePath());
 			mediaPlayer.prepare();
 			mediaPlayer.start();

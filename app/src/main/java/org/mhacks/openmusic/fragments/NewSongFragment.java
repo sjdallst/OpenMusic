@@ -17,6 +17,7 @@ import java.util.List;
 @EFragment(R.layout.base_song_fragment)
 public class NewSongFragment extends BaseSongFragment {
 
+	private EditText mSongTitleEditText;
 	private EditText mFirstNameEditText;
 	private EditText mLastNameEditText;
 
@@ -54,6 +55,7 @@ public class NewSongFragment extends BaseSongFragment {
 						new MaterialDialog.ButtonCallback() {
 							@Override
 							public void onPositive(MaterialDialog dialog) {
+								mMediaSong.title = mSongTitleEditText.getText().toString();
 								mMediaSong.firstName = mFirstNameEditText.getText().toString();
 								mMediaSong.lastName = mLastNameEditText.getText().toString();
 								mDatabase.addSong(mMediaSong);
@@ -64,6 +66,7 @@ public class NewSongFragment extends BaseSongFragment {
 								super.onNegative(dialog);
 							}
 						}).build();
+		mSongTitleEditText = (EditText) dialog.getCustomView().findViewById(android.R.id.input);
 		mFirstNameEditText = (EditText) dialog.getCustomView().findViewById(android.R.id.text1);
 		mLastNameEditText = (EditText) dialog.getCustomView().findViewById(android.R.id.text2);
 		dialog.show();

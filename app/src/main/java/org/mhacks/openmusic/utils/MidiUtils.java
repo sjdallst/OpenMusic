@@ -27,7 +27,6 @@ public class MidiUtils {
 	@RootContext
 	Context mContext;
 
-	MediaPlayer mediaPlayer = new MediaPlayer();
 	public void playMidi(Song song) {
 		MidiTrack noteTrack = new MidiTrack();
 		MidiTrack tempoTrack = new MidiTrack();
@@ -63,10 +62,7 @@ public class MidiUtils {
 		}
 
 		try {
-			if(mediaPlayer.isPlaying()) {
-				mediaPlayer.stop();
-				mediaPlayer.reset();
-			}
+			MediaPlayer mediaPlayer = new MediaPlayer();
 			mediaPlayer.setDataSource(output.getAbsolutePath());
 			mediaPlayer.prepare();
 			mediaPlayer.start();
@@ -109,9 +105,6 @@ public class MidiUtils {
 	}
 
 	public List<Measure> getMeasuresFromNotes(List<Note> notes) {
-//		for(int i = 0; i < notes.size(); ++i) {
-//			notes.get(i).duration /= 120;
-//		}
 		ArrayList<Measure> measureList = new ArrayList<>();
 		Measure measure = new Measure(0, new ArrayList<Note>(), 0);
 		int xPosition = 0;

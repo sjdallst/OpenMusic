@@ -161,6 +161,7 @@ public abstract class BaseSongFragment extends Fragment {
 		if (mMediaSong == null) {
 			return;
 		}
+		mMediaSong.measures = mMeasureList;
 		mMidiUtils.playMidi(mMediaSong);
 	}
 
@@ -220,7 +221,7 @@ public abstract class BaseSongFragment extends Fragment {
 	public void addNoteToArray(int length) {
 		mMeasureList.get(mMeasureList.size() - 1).numBeats += length;
 		List<Note> notes = mMeasureList.get(mMeasureList.size() - 1).notes;
-		notes.add(new Note(64, length * 120, notes.size()));
+		notes.add(new Note(64, length, notes.size()));
 	}
 
 	public void displayNote(int length) {

@@ -26,5 +26,6 @@
 	<string name="tempo">Tempo: </string>
 	<string name="first_name">First Name</string>
 	<string name="last_name">Last Name</string>
+	<string name="song_title">Song Title</string>
 	<string name="composed_by">This song was originally composed by %1$s.</string>
 </resources>

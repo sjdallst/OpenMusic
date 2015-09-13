@@ -1,13 +1,73 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<ScrollView
 		xmlns:android="http://schemas.android.com/apk/res/android"
-		android:orientation="vertical"
-		android:layout_width="match_parent"
-		android:layout_height="match_parent">
-
-	<TextView
-			android:id="@android:id/text1"
+		android:layout_height="match_parent"
+		android:layout_width="match_parent">
+	<LinearLayout
+			android:layout_height="match_parent"
 			android:layout_width="match_parent"
-			android:layout_height="match_parent"/>
+			android:orientation="vertical">
 
-</LinearLayout>
+		<android.support.v7.widget.RecyclerView
+				android:id="@+id/my_recycler_view"
+				android:layout_width="match_parent"
+				android:layout_height="250dp"/>
+
+		<LinearLayout
+				android:id="@+id/footer"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:orientation="horizontal"
+				style="@android:style/ButtonBar">
+
+			<Button
+					android:id="@+id/sixteenthButton"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_weight="1"
+					android:text="1/16" />
+
+			<Button
+					android:id="@+id/eigthButton"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_weight="1"
+					android:text="1/8" />
+
+			<Button
+					android:id="@+id/fourthButton"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_weight="1"
+					android:text="1/4" />
+
+			<Button
+					android:id="@+id/halfButton"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_weight="1"
+					android:text="1/2" />
+
+			<Button
+					android:id="@+id/wholeButton"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_weight="1"
+					android:text="1" />
+
+			<Button
+					android:id="@+id/measureButton"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_weight="1"
+					android:text="+" />
+			<ImageView
+					android:id="@+id/trash_can"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_weight="1"
+					android:src="@drawable/ic_trash_can"/>
+
+		</LinearLayout>
+	</LinearLayout>
+</ScrollView>

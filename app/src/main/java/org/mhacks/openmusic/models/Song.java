@@ -9,12 +9,20 @@ public class Song {
 	public String firstName;
 	public String lastName;
 	public String title;
-	public List<Note> notesList;
+	public List<Measure> measures;
 
-	public Song(String id, int tempo, String title, List<Note> notesList) {
+	public Song(
+			String id,
+			int tempo,
+			String firstName,
+			String lastName,
+			String title,
+			List<Measure> measures) {
 		this.id = id;
 		this.tempo = tempo;
+		this.firstName = firstName;
+		this.lastName = lastName;
 		this.title = title;
-		this.notesList = notesList;
+		this.measures = measures;
 	}
 }

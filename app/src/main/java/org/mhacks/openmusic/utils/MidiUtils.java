@@ -12,6 +12,7 @@ import com.leff.midi.event.meta.TimeSignature;
 import org.androidannotations.annotations.EBean;
 import org.androidannotations.annotations.EBean.Scope;
 import org.androidannotations.annotations.RootContext;
+import org.mhacks.openmusic.models.Measure;
 import org.mhacks.openmusic.models.Note;
 import org.mhacks.openmusic.models.Song;
 
@@ -42,9 +43,11 @@ public class MidiUtils {
 		tempoTrack.insertEvent(tempo);
 
 		int currentTime = 0;
-		for (Note note : song.notesList) {
-			noteTrack.insertNote(1, note.midiNumber, 100, currentTime, note.duration);
-			currentTime = currentTime + note.duration;
+		for (Measure measure : song.measures) {
+			for (Note note : measure.notes) {
+				noteTrack.insertNote(1, note.midiNumber, 100, currentTime, note.duration * 120);
+				currentTime = currentTime + note.duration * 120;
+			}
 		}
 
 		tracks.add(tempoTrack);
@@ -73,9 +76,13 @@ public class MidiUtils {
 
 	public String getSongString(Song song) {
 		try {
+			List<Note> notes = new ArrayList<>();
+			for (Measure measure : song.measures) {
+				notes.addAll(measure.notes);
+			}
 			return new ObjectMapper()
 					.writerWithDefaultPrettyPrinter()
-					.writeValueAsString(song.notesList);
+					.writeValueAsString(notes);
 		}
 		catch (IOException exception) {
 			LogUtils.error(exception);
@@ -87,12 +94,42 @@ public class MidiUtils {
 		try {
 			ObjectMapper objectMapper = new ObjectMapper();
 			return objectMapper
-					.readValue(jsonString, objectMapper.getTypeFactory()
+					.readValue(
+							jsonString, objectMapper.getTypeFactory()
 									.constructCollectionType(List.class, Note.class));
 		}
 		catch (IOException exception) {
 			LogUtils.error(exception);
 			return null;
 		}
+	}
+
+	public List<Measure> getMeasuresFromNotes(List<Note> notes) {
+//		for(int i = 0; i < notes.size(); ++i) {
+//			notes.get(i).duration /= 120;
+//		}
+		ArrayList<Measure> measureList = new ArrayList<>();
+		Measure measure = new Measure(0, new ArrayList<Note>(), 0);
+		int xPosition = 0;
+		for (int i = 0; i < notes.size(); ++i) {
+			if ((measure.numBeats + (notes.get(i).duration)) <= 16) {
+				measure.numBeats += notes.get(i).duration;
+				measure.notes.add(notes.get(i));
+				notes.get(i).xPosition = xPosition;
+				++xPosition;
+			}
+			else {
+				measureList.add(measure);
+				measure = new Measure(0, new ArrayList<Note>(), 0);
+				xPosition = 0;
+
+				measure.numBeats += notes.get(i).duration;
+				measure.notes.add(notes.get(i));
+				notes.get(i).xPosition = xPosition;
+				++xPosition;
+			}
+		}
+		measureList.add(measure);
+		return measureList;
 	}
 }

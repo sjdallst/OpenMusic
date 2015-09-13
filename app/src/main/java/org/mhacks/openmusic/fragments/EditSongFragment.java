@@ -18,14 +18,17 @@ public class EditSongFragment extends BaseSongFragment {
 	public Songs mSongArg;
 
 	@AfterViews
-	@Override
 	public void onViewChanged() {
 		getActivity().setTitle(mSongArg.title);
-		List<Note> noteList = mMidiUtils.getNotes(mSongArg.song);
-		mMediaSong = new Song(mSongArg.id, mSongArg.tempo, mSongArg.title, noteList);
-		mMediaSong.firstName = mSongArg.firstname;
-		mMediaSong.lastName = mSongArg.lastname;
-		mTextView.setText(mMidiUtils.getSongString(mMediaSong));
+		List<Note> notes = mMidiUtils.getNotes(mSongArg.song);
+		mMediaSong = new Song(
+				mSongArg.id,
+				mSongArg.tempo,
+				mSongArg.firstname,
+				mSongArg.lastname,
+				mSongArg.title,
+				null);
+		initialize(notes);
 	}
 
 	@OptionsItem(R.id.save_song_action)

@@ -7,7 +7,7 @@ import android.support.v7.widget.Toolbar;
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.ViewById;
-import org.mhacks.openmusic.fragments.SongsFragment_;
+import org.mhacks.openmusic.fragments.SongsListFragment_;
 
 import static org.mhacks.openmusic.fragments.RecyclerViewFragment.OnFragmentInteractionListener;
 
@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity implements OnFragmentInterac
 		setSupportActionBar(mToolbar);
 		getSupportFragmentManager()
 				.beginTransaction()
-				.replace(android.R.id.primary, new SongsFragment_())
+				.replace(android.R.id.primary, new SongsListFragment_())
 				.commit();
 	}
 

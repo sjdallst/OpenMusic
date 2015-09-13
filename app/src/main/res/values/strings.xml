@@ -2,6 +2,8 @@
 	<string name="app_name">Open Music</string>
 
 	<!-- Fragment Title -->
+	<string name="base_song_fragment_title">Song</string>
+	<string name="new_song_fragment_title">New Song</string>
 	<string name="songs_fragment_title">Songs</string>
 
 	<!-- Main Menu String -->
@@ -22,4 +24,7 @@
 
 	<!-- Misc -->
 	<string name="tempo">Tempo: </string>
+	<string name="first_name">First Name</string>
+	<string name="last_name">Last Name</string>
+	<string name="composed_by">This song was originally composed by %1$s.</string>
 </resources>

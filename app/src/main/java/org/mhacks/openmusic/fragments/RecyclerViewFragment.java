@@ -2,6 +2,7 @@ package org.mhacks.openmusic.fragments;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;
+import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -35,6 +36,8 @@ public abstract class RecyclerViewFragment extends Fragment {
 	@Bean
 	Database mDatabase;
 
+	@ViewById(android.R.id.button1)
+	FloatingActionButton mFloatingActionButton;
 	@ViewById(android.R.id.empty)
 	LinearLayout mEmptyViewLayout;
 	@ViewById(android.R.id.progress)
@@ -126,6 +129,7 @@ public abstract class RecyclerViewFragment extends Fragment {
 	@UiThread
 	protected void setLoading() {
 		mEmptyViewLayout.setVisibility(View.GONE);
+		mFloatingActionButton.setVisibility(View.GONE);
 		if (mSwipeRefreshLayout.getVisibility() == View.VISIBLE) {
 			mSwipeRefreshLayout.setRefreshing(true);
 		} else {
@@ -148,15 +152,19 @@ public abstract class RecyclerViewFragment extends Fragment {
 			mEmptyTextView.setText(mErrorText + '\n' + mRetryText);
 			mEmptyTextView.setCompoundDrawablesWithIntrinsicBounds(null, mErrorDrawable, null, null);
 			mEmptyViewLayout.setVisibility(View.VISIBLE);
+			mFloatingActionButton.setVisibility(View.GONE);
 		}
 	}
 
 	@UiThread
 	protected void setLoadingSucceeded() {
+		mFloatingActionButton.setVisibility(View.VISIBLE);
 		if (mRecyclerView.getAdapter().getItemCount() == 0) {
 			mEmptyTextView.setText(mEmptyText);
 			mEmptyTextView.setCompoundDrawablesWithIntrinsicBounds(null, mEmptyDrawable, null, null);
 			mEmptyViewLayout.setVisibility(View.VISIBLE);
+			mSwipeRefreshLayout.setVisibility(View.GONE);
+			mProgressBar.setVisibility(View.GONE);
 			return;
 		}
 		mEmptyTextView.setVisibility(View.GONE);

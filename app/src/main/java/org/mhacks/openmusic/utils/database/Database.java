@@ -46,7 +46,8 @@ public class Database {
 
 	public void addSong(Song song) {
 		Songs songs = new Songs(
-				song.id,
+				song.firstName,
+				song.lastName,
 				mMidiUtils.getSongString(song),
 				song.tempo,
 				song.title);
@@ -73,10 +74,12 @@ public class Database {
 
 	public void updateSong(Song song) {
 		Songs songs = new Songs(
-				song.id,
+				song.firstName,
+				song.lastName,
 				mMidiUtils.getSongString(song),
 				song.tempo,
 				song.title);
+		songs.id = song.id;
 		mClient.getTable(Songs.class).update(songs).addListener(
 				new Runnable() {
 					@Override

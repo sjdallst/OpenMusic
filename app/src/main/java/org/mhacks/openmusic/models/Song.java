@@ -6,6 +6,8 @@ public class Song {
 
 	public String id;
 	public int tempo;
+	public String firstName;
+	public String lastName;
 	public String title;
 	public List<Note> notesList;
 

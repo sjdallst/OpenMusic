@@ -8,18 +8,18 @@
 			android:id="@+id/change_tempo_action"
 			android:title="@string/change_tempo"
 			android:icon="@drawable/ic_action_change_tempo"
-			app:showAsAction="ifRoom"/>
+			app:showAsAction="always"/>
 
 	<item
 			android:id="@+id/play_song_action"
 			android:title="@string/play_song"
 			android:icon="@drawable/ic_action_play"
-			app:showAsAction="ifRoom"/>
+			app:showAsAction="always"/>
 
 	<item
-		android:id="@+id/save_song_action"
-		android:title="@string/save_song"
-		android:icon="@drawable/ic_action_save"
-		app:showAsAction="ifRoom"/>
+			android:id="@+id/save_song_action"
+			android:title="@string/save_song"
+			android:icon="@drawable/ic_action_save"
+			app:showAsAction="always"/>
 
 </menu>
